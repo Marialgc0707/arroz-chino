@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#a8150d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Dela+Gothic+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="menu.js" defer></script>
+<script src="scrip.js" defer></script>
+<title>Vámonos Pa' Que Monche | Restaurante Chino</title>
+</head>
+<body>
+
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#menu">Menú</a>
+<a href="#entradas">Arroz y Pasta</a>
+<a href="#tradicional">Tradicional</a>
+<a href="#especial">Especial</a>
+<a href="#camarones">Camarones</a>
+<a href="#pollo">Pollo</a>
+<a href="#extras">Extras</a>
+<a href="#kilo">Por Kilo</a>
+</nav>
+
+<header class="hero" id="inicio">
+<div class="hero-card">
+<div class="hero-text">
+<h1>Tu antojo de comida china, preparado para disfrutar.</h1>
+<div class="open-status" id="open-status" role="status" aria-live="polite">
+<span class="dot" aria-hidden="true"></span>
+<span class="open-text"><strong id="open-text">Horario</strong><small>Todos los días · 11:00 am – 6:00 pm</small></span>
+</div>
+<a class="btn" href="#menu">Ver el menú</a>
+<div class="kicker">Tradición · Sabor · Calidad</div>
+</div>
+<img class="restaurant-logo" src="logoarroz.png" alt="Logo Vámonos Pa' Que Monche" width="479" height="521">
+</div>
+</header>
+
+
+<!-- Explorador visual del menú -->
+<section class="menu-explorer" id="menu" aria-label="Explorar menú">
+  <div class="menu-intro">
+    <span class="section-eyebrow">DESCUBRE NUESTROS SABORES</span>
+    <h2>¿Qué se te antoja hoy?</h2>
+    <p>Explora las categorías o busca tu plato favorito.</p>
+  </div>
+  <label class="menu-search" for="menu-search-input">
+    <span aria-hidden="true">⌕</span>
+    <input id="menu-search-input" type="search" placeholder="Buscar arroz, pasta, pollo..." autocomplete="off">
+    <button type="button" id="menu-search-clear" aria-label="Limpiar búsqueda">×</button>
+  </label>
+  <div class="menu-filters" id="menu-filters" aria-label="Filtrar por categoría">
+    <button type="button" class="filter-chip active" data-filter="all">Todo el menú</button>
+  </div>
+  <p class="menu-results" id="menu-results" aria-live="polite">Explora nuestros platos</p>
+</section>
+
+<!-- El menú se arma solo desde menu.js: aquí se insertan las secciones (arroces, pollo, extras, kilo). -->
+
+<section id="acciones" class="acciones"><h2>Visítanos y haz tu pedido</h2><div class="divider"></div><div class="action-grid"><a class="chinese-btn" href="https://maps.app.goo.gl/oCXpnNJACLc1YE9SA" target="_blank" rel="noopener noreferrer"><span class="btn-icon">📍</span><span><strong>Cómo llegar</strong><small>Ver ubicación del local</small></span></a><a class="chinese-btn" href="https://wa.me/584145676868" target="_blank" rel="noopener noreferrer"><span class="btn-icon">💬</span><span><strong>WhatsApp</strong><small>Escríbenos para tu pedido</small></span></a></div></section>
+
+<footer>
+<p>Vámonos Pa' Que Monche · Restaurante Chino</p>
+<p>Tradición • Sabor • Calidad</p>
+<p>Horario: 11:00 am – 6:00 pm</p>
+</footer>
+
+<!-- ========== CARRITO ========== -->
+<button type="button" id="cart-fab" aria-label="Abrir carrito">🛒<span id="cart-count">0</span></button>
+<div id="cart-overlay"></div>
+<aside id="cart-drawer" aria-label="Carrito de compras">
+  <div class="cart-head"><h3>Tu pedido</h3><button type="button" id="cart-close" aria-label="Cerrar">✕</button></div>
+  <div id="cart-items"></div>
+  <div id="cart-done">
+    <div class="done-mark" aria-hidden="true">✓</div>
+    <h4>¡Casi listo!</h4>
+    <p>Abrimos WhatsApp con tu pedido. <b>Toca “Enviar” allá</b> para que nos llegue.</p>
+    <a id="cart-done-link" class="done-link" href="#" target="_blank" rel="noopener noreferrer">¿No se abrió WhatsApp? Toca aquí</a>
+    <button type="button" id="cart-done-ok">Ya envié mi pedido</button>
+    <button type="button" id="cart-done-back">Volver a mi pedido</button>
+  </div>
+  <div class="cart-foot">
+    <div id="cart-hours-note" class="cart-hours-note" hidden></div>
+    <input type="text" id="cart-name" placeholder="Tu nombre" autocomplete="name">
+    <div class="cart-mode" role="radiogroup" aria-label="Tipo de pedido">
+      <label class="mode-opt"><input type="radio" name="cart-mode" value="retiro" checked><span>🏪 Retiro en local</span></label>
+      <label class="mode-opt"><input type="radio" name="cart-mode" value="delivery"><span>🛵 Delivery</span></label>
+    </div>
+    <div id="cart-address-wrap" hidden>
+      <select id="cart-zone" aria-label="Zona de entrega" hidden></select>
+      <textarea id="cart-address" rows="2" placeholder="Dirección de entrega (sector, calle, casa/edif., referencia)" autocomplete="street-address"></textarea>
+      <small class="cart-hint" id="cart-delivery-hint">El costo del delivery se confirma por WhatsApp.</small>
+    </div>
+    <select id="cart-pay" aria-label="Método de pago">
+      <option value="">Método de pago</option>
+      <option>Efectivo</option>
+      <option>Pago móvil</option>
+      <option>Zelle</option>
+      <option>Punto de venta</option>
+    </select>
+    <textarea id="cart-notes" rows="2" placeholder="Notas del pedido (opcional)"></textarea>
+    <p id="cart-min" class="cart-hint" hidden></p>
+    <div class="cart-total-row cart-sub" id="cart-delivery-row" hidden><span>Delivery</span><b id="cart-delivery">$0.00</b></div>
+    <div class="cart-total-row"><span>Total</span><b id="cart-total">$0.00</b></div>
+    <p id="cart-bs" class="cart-bs" hidden></p>
+    <p id="cart-error" class="cart-error" role="alert"></p>
+    <button type="button" id="cart-send" disabled>Enviar pedido por WhatsApp</button>
+    <button type="button" id="cart-clear">Vaciar carrito</button>
+  </div>
+</aside>
+<div id="cart-toast"></div>
+
+</body>
+</html>
